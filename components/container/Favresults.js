@@ -13,7 +13,7 @@ export default class InstanceResults extends React.Component{
   
   render()
   {
-    
+    let a="https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=100&photoreference="+this.props.reff+"&key=AIzaSyDjQVzBMXAdwCe47SppuLvG0MPNtqwdwXg"
     return(
       
         <GridTile
@@ -21,7 +21,7 @@ export default class InstanceResults extends React.Component{
           title={this.props.name}
           subtitle={<span>by <b>{this.props.Address}</b></span>}
           actionIcon={<button  style={{borderRadius: 10}}>save</button>}>
-          <img src={this.props.img} style={{width:400,height:300}}/>
+          <img src={a} style={{width:400,height:300}}/>
         </GridTile>
       
         );  

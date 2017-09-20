@@ -13,13 +13,7 @@ export default class Results extends React.Component{
 
     super(props);
     console.log("Inside Results Constructor"+this.props.jsondata1);
-    // this.state={
-    //   result:[]
-    // }
   }
-
-
-    
   render()
   {
         const styles = {
@@ -35,22 +29,29 @@ export default class Results extends React.Component{
             },
         };
       var results =this.props.jsondata1.map(function(obj){
-                
-              return <InstanceResults key={obj.id} name={obj.name} Address={obj.vicinity} img={obj.icon} />;
+        let a;
+
+        if(obj.photos){
+        a="https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=100&photoreference="+obj.photos[0].photo_reference+"&key=AIzaSyDjQVzBMXAdwCe47SppuLvG0MPNtqwdwXg";
+        }
+        else{
+        a=obj.icon;
+        }
+
+                console.log(obj.photos)
+              return <InstanceResults key={obj.id} name={obj.name} Address={obj.vicinity} img={a} />;
     }) 
   	
     return(
+
      <div style={styles.root}>
      <GridList
       cellHeight={300}
-      style={styles.gridList} cols={3}>
-     
+      style={styles.gridList} cols={3} padding={20}>
       {results}
     </GridList>  
      </div>
-        );  
-          
-  }
 
-  
+        );     
+  }
 }

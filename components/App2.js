@@ -28,7 +28,7 @@ export default class App extends React.Component{
 		return(
 				<div style={{marginTop: "0px",marginBottom: "-10px",marginLeft: "-10px",marginRight: "-10px"}}>
 				     <Search  fun2={this.search1}/>
-	                  <Results jsondata1={this.state.jsondata} />
+	                      <Favourites jsondata2={this.state.jsondata} />
 				     <Footer />
 				 
 				</div>
@@ -44,7 +44,7 @@ export default class App extends React.Component{
 		  a.push(data1.results[i])
 		}
 		//console.log("Test 2"+a)
-		this.setState({jsondata:data1.results})
+		this.setState({jsondata:a})
 		//console.log("Rerendering triggered")
 	}
 

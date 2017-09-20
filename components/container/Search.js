@@ -9,10 +9,42 @@ export default class Search extends React.Component{
   constructor(){
     super()
     this.search=this.search.bind(this)
+     this.params=this.params.bind(this)
     this.state={
-      jdata:null
+      jdata:null,
+      l:null,
+      t:null
     }
   }
+   componentDidUpdate(prevProps, prevState){
+    
+    if (this.state.l !==prevState.l && this.state.t !== prevState.t) {
+   console.log("component did updated search");
+  
+  }
+  
+
+}
+  shouldComponentUpdate(nextProps,nextState){
+  console.log("should component update")
+  console.log("this state....."+this.state.l)
+  console.log("next state ......"+nextState.l)
+  if(this.state.l !== nextState.l || this.state.t !== nextState.t)
+  {
+    console.log(true)
+    return true;
+  }
+  return false;
+  
+}
+componentWillUpdate(nextProps,nextState){
+   console.log("component will updated search");
+   if(this.state.l !== nextState.l || this.state.t !== nextState.t)
+   {
+     console.log("component will updated search in stmt");
+     this.search(nextState.l,nextState.t);
+   }
+}
   render()
   {
     return(
@@ -24,28 +56,33 @@ export default class Search extends React.Component{
             <TextField ref="input1"
               id="text-field-controlled" hintText="Enter Type" style={{marginRight:20,width:600}}
             />
-            <button style={{cursor:'pointer',borderRadius: 2}} onClick={this.search}>Search</button>
+            <button style={{cursor:'pointer',borderRadius: 2}} onClick={this.params}>Search</button>
           
       </div>
       
         );  
           
   }
-  search(){
- var l=this.refs.input.getValue();
- var t=this.refs.input1.getValue();
- console.log(l,t)
- axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=12.934533,77.626579 &radius=500&type='+t+'&keyword='+l+'&key=AIzaSyDjQVzBMXAdwCe47SppuLvG0MPNtqwdwXg') 
+  params(){
+    console.log("setting values")
+    this.setState({l:this.refs.input.getValue()});
+    this.setState({t:this.refs.input1.getValue()});
+    console.log("-------"+this.state.l)
+    console.log("-------"+this.state.t)
+  }
+  search(a,b){
+ // var l=this.refs.input.getValue();
+ // var t=this.refs.input1.getValue();
+ // console.log(l,t)
+ console.log('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=12.972442,77.626579 &radius=500&type='+b+'&keyword='+a+'&key=AIzaSyDjQVzBMXAdwCe47SppuLvG0MPNtqwdwXg');
+ axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=12.9716,77.5946 &radius=500&type='+a+'&keyword='+b+'&key=AIzaSyDjQVzBMXAdwCe47SppuLvG0MPNtqwdwXg') 
       .then((response) => {
         this.setState({
           jdata  : response.data
         });
         console.log(this.state.jdata)
-        let jsondata = JSON.stringify(this.state.jdata);
-        let encoding = 'utf8';
-        console.log("Test 1"+jsondata);
         this.props.fun2(this.state.jdata)
-
+        
 
       })
       .catch( (error) => {

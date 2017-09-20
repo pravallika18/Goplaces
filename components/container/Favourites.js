@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import InstanceResults from './InstanceResults';
+import Favresults from './Favresults';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
@@ -12,14 +12,8 @@ export default class Favourites extends React.Component{
   constructor(props){
 
     super(props);
-    console.log("Inside Results Constructor"+this.props.jsondata1);
-    // this.state={
-    //   result:[]
-    // }
+    console.log("Inside Favourites Constructor"+this.props.jsondata1);
   }
-
-
-    
   render()
   {
         const styles = {
@@ -30,7 +24,7 @@ export default class Favourites extends React.Component{
               },
             gridList: {
               width: 1200,
-              height: 680,
+              height: 600,
               overflowY: 'auto',
             },
         };
@@ -40,9 +34,11 @@ export default class Favourites extends React.Component{
     }) 
   	
     return(
+
      <div style={styles.root}>
+     <h2>Favourites...</h2>
      <GridList
-      cellHeight={310}
+      cellHeight={300}
       style={styles.gridList} cols={3}>
       {results}
     </GridList>  

@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ximanta/react-walkthrough.git"
+    "url": "https://github.com/pravallika18/Goplaces"
   },
   "keywords": [
     "react",
@@ -22,9 +22,9 @@
   "author": "Pravallika",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/ximanta/react-walkthrough/issues"
+    "url": "https://github.com/pravallika18/Goplaces/issues"
   },
-  "homepage": "https://simantas.wordpress.com/",
+  
   "dependencies": {
     "babel-runtime": "^6.20.0",
     "log4js": "^2.3.3",
@@ -32,8 +32,7 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-inline-grid": "^0.5.3",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
+    "react-router": "^2.0.1",
     "write-json-file": "^2.2.0"
   },
   "devDependencies": {
