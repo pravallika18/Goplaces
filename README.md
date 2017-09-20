@@ -15,7 +15,7 @@ The various webpack options used have been explained in detailed as comments in 
 ```
 npm install
 npm start
-Open http://localhost:9000
+Open http://localhost:8080
 ```
 
 ### Linting
@@ -25,8 +25,4 @@ ESLint with React linting options have been enabled.
 ```
 npm run lint
 ```
-
-### Decoding React - Part 1
-
-https://simantas.wordpress.com/2017/08/26/decoding-react-part-1/
 
